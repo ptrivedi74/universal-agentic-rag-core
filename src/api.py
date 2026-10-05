@@ -1,3 +1,13 @@
+"""
+REST API Web Service Endpoint
+-----------------------------
+FastAPI application exposing the Agentic RAG engine as an HTTP service.
+
+Usage:
+    uvicorn src.api:app --reload --port 8000
+"""
+
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from src.agents.retriever import AgenticRAGGraph
