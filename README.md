@@ -35,3 +35,24 @@ Designed for enterprise deployment, this core engine combines **LangGraph orches
                                      │  Response Generator &  │
                                      │ Guardrails (PII/Audit) │
                                      └────────────────────────┘
+
+## **Adapting This Engine for Your Own Projects**
+
+This repository is built with a plug-and-play modular architecture. You can easily adapt it for your custom domain, custom LLM providers, or existing vector databases in three steps:
+
+### 1. **Connecting Your Own Document Sources**
+Replace the sample files in `data/sample_docs/` with your own project documentation (`.pdf`, `.md`, `.txt`, `.csv`, `.json`).
+
+To trigger chunking and vector indexing programmatically within your own Python application:
+
+```python
+from src.ingestion.loader import UniversalDocumentLoader
+from src.vectorstore.store import VectorStoreManager
+
+# Load and split your custom documents
+loader = UniversalDocumentLoader(chunk_size=1000, chunk_overlap=150)
+chunks = loader.load_directory("./path/to/your/custom_docs")
+
+# Index into ChromaDB
+vstore = VectorStoreManager(persist_dir="./data/vector_db")
+vstore.add_documents(chunks)
