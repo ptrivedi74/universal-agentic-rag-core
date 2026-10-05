@@ -1,9 +1,0 @@
-{
-  "doc_type": "Incident Response Guideline",
-  "version": "1.2",
-  "triage_steps": [
-    "Identify impacted system components and isolation boundaries.",
-    "Log timestamped operational events in the central correlation log.",
-    "Notify affected regional dispatch leads and document corrective actions."
-  ]
-}

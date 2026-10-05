@@ -1,2 +1,0 @@
-Place your custom Markdown (.md), PDF (.pdf), Text (.txt), CSV (.csv), or JSON (.json) documents in this directory. 
-The ingestion pipeline (`python -m src.ingestion.loader`) automatically scans and indexes all supported files into ChromaDB.

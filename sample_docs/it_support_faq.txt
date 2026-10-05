@@ -1,5 +1,0 @@
-Q: How do I request elevated access to production cloud infrastructure?
-A: Submit a ticket through the IT Service Desk portal referencing your active project code. Access requests require approval from the Enterprise Architect and DevSecOps Lead. Approved access grants temporary credentials valid for 8 hours.
-
-Q: What is the incident escalation process for critical platform outages?
-A: Severity-1 outages must be reported to the central Incident Response Manager via Slack (#ops-incident) or phone within 15 minutes of detection.
