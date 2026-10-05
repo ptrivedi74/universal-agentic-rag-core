@@ -1,0 +1,57 @@
+# ==============================================================================
+# Universal Agentic RAG Core - Application Settings
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# LLM & Embedding Model Configuration
+# ------------------------------------------------------------------------------
+models:
+  default_provider: "openai"              # Options: openai, ollama, vllm
+  llm_model: "gpt-4o-mini"               # Options: gpt-4o, gpt-4o-mini, llama3
+  embedding_model: "text-embedding-3-small"
+  temperature: 0.1                       # Low temperature for deterministic output
+  max_tokens: 1500
+
+# ------------------------------------------------------------------------------
+# Vector Store & Retrieval Configuration
+# ------------------------------------------------------------------------------
+vectorstore:
+  provider: "chroma"                     # Options: chroma, qdrant, faiss
+  persist_directory: "./data/vector_db"
+  collection_name: "enterprise_knowledge"
+  similarity_metric: "cosine"
+  top_k_results: 4                       # Number of chunks retrieved per search
+
+# ------------------------------------------------------------------------------
+# Document Chunking & Processing Rules
+# ------------------------------------------------------------------------------
+ingestion:
+  chunk_size: 1000                       # Tokens or characters per chunk
+  chunk_overlap: 150                     # Overlap to preserve context boundaries
+  supported_extensions:
+    - ".pdf"
+    - ".md"
+    - ".txt"
+    - ".csv"
+    - ".json"
+
+# ------------------------------------------------------------------------------
+# Agentic & Corrective RAG (CRAG) Parameters
+# ------------------------------------------------------------------------------
+agent:
+  max_retry_attempts: 2                  # Max re-query attempts if context is poor
+  relevance_threshold: 0.7              # Minimum context score required to pass
+  enable_query_rewrite: true             # Rewrite query if initial search fails
+
+# ------------------------------------------------------------------------------
+# Governance, PII Guardrails & Cost Tracking
+# ------------------------------------------------------------------------------
+governance:
+  enable_pii_redaction: true
+  redact_patterns:
+    - "email"
+    - "phone"
+    - "ssn"
+    - "credit_card"
+  cost_per_1k_tokens_input: 0.00015     # Pricing model for cost estimation ($)
+  cost_per_1k_tokens_output: 0.00060
